@@ -6,8 +6,12 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var jobprofile = require('./api/jobprofile/jobprofileRoutes.js');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/jobprofile', jobprofile);
 
 module.exports = app;
