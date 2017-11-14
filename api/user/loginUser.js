@@ -21,7 +21,7 @@ module.exports = function (req, res, next) {
                     data: "Is this data transmitted back and forth"
                 };
 
-                var token = jwt.sign(payload, 'superSecret', {
+                var token = jwt.sign(payload, process.env.JWT_SECRET, {
                     expiresIn: 1440 // expires in 24 hours
                 });
 
