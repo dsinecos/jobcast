@@ -14,11 +14,10 @@ module.exports = function (req, res, next) {
 
             if (user.password = password) {
                 console.log("User authenticated");
-                console.log("user.admin value isqalto : " + user.admin);
+                console.log("user.admin value isqalto : " + JSON.stringify(user, null, "  "));
 
                 const payload = {
-                    admin: user.isadmin,
-                    data: "Is this data transmitted back and forth"
+                    user_id: user.user_id
                 };
 
                 var token = jwt.sign(payload, process.env.JWT_SECRET, {

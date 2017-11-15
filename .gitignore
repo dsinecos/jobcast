@@ -1,2 +1,3 @@
 .env
+db/dbSetup.js
 node_modules/

@@ -12,11 +12,13 @@ module.exports = function (req, res, next) {
                 err.status = 401;
                 return next(err);
             } else {
-                console.log("This is the decoded information");
-                console.log(decoded);
+                // console.log("This is the decoded information");
+                console.log("This is the user_id of the user from whom token was just received" + decoded.user_id);
+
+                req.user_id = decoded.user_id;
 
                 var decodedInfo = jwt.decode(token, {complete: true});
-                console.log(decodedInfo);
+                // console.log(decodedInfo);
                 
                 next();
             }

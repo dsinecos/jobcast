@@ -6,7 +6,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
+var express_enforces_ssl = require('express-enforces-ssl');
+
 var app = express();
+
+app.enable('trust proxy');
+app.use(express_enforces_ssl());
 
 var jobprofile = require('./api/jobprofile/jobprofileRoutes.js');
 var user = require('./api/user/userRoutes.js');
@@ -17,5 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/jobprofile', jobprofile);
 app.use('/user', user);
+
+app.get('/', function(req, res, next) {
+    res.send("Testing if HTTPS works");
+})
 
 module.exports = app;
